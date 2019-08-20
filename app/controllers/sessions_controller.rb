@@ -9,20 +9,16 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if is_nil_or_empty
+    if params[:name].nil? || params[:name].empty?
       redirect_to '/new'
     else
-      current_user = params[:name]
+      session[:name] = params[:name]
       redirect_to '/home'
+    end
   end
 
   def destroy
-    current_user = nil
+    session[:name] = nil
     redirect_to '/new'
-  end
-
-  private
-  def is_nil_or_empty
-    if params[:name].nil? || params[:name].empty?
   end
 end
