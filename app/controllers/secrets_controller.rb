@@ -9,8 +9,6 @@ skip_before_action :require_login, only: [:show]
     end
   end
 
-
-
   def require_login
     return head(:forbidden) unless session.include? :name
   end
